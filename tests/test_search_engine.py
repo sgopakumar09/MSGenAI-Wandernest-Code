@@ -24,6 +24,17 @@ class TestTravelSearchEngine:
         engine = TravelSearchEngine()
         assert engine is not None
 
+    def test_mlflow_tracking_can_be_disabled(self, mock_config):
+        mock_config.MLFLOW_TRACKING_URI = "http://mlflow.example"
+        engine = object.__new__(TravelSearchEngine)
+        engine.enable_mlflow_tracking = False
+
+        with patch("src.search_engine.mlflow.set_tracking_uri") as set_tracking_uri:
+            with engine._run_context("evaluation") as tracking:
+                assert tracking is False
+
+        set_tracking_uri.assert_not_called()
+
     @patch("src.search_engine.AzureChatOpenAI")
     @patch("src.search_engine.AzureOpenAIEmbeddings")
     @patch("src.search_engine.get_vector_store")

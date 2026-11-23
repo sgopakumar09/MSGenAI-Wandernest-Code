@@ -1,0 +1,1 @@
+"Churning" refers to repeated bookings for the same sector or overlapping sectors for the same passenger, made via a PNR or across multiple PNRs on the same GDS or across different GDSs by an agent [1]. Air India permits up to 4 churns in Economy (10 in Premium) before ADMs apply [1][2].

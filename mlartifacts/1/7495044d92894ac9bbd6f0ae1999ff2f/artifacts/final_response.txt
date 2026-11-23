@@ -1,0 +1,1 @@
+Air India defines "churning" as the repeated bookings for the same sector (or overlapping sectors) for the same passenger, made either within a single PNR or across multiple PNRs, on the same GDS or across different GDSs by an agent. Parameters used to judge churning include same origin, destination, passenger name and IATA code [1].

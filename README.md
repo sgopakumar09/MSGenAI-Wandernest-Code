@@ -141,10 +141,12 @@ Evaluate chatbot performance using Ragas metrics:
 python src/evaluate.py
 ```
 
-Ragas runs against the Azure OpenAI chat and embedding deployments and writes
-`reports/evaluation_summary.json` plus per-question scores to
-`reports/evaluation_detailed.csv`. The command exits `0` only when all four metrics
-meet their 0.70 minimum thresholds; otherwise it exits nonzero.
+Ragas runs against the Azure OpenAI chat and embedding deployments, prints progress
+and a score summary, and writes `reports/evaluation_summary.json`,
+`reports/evaluation_detailed.csv`, and `reports/category_breakdown.json`. Category
+accuracy checks whether the top retrieved document's category matches the golden
+dataset label. The command exits `0` only when all four Ragas metrics and category
+accuracy meet their 0.70 thresholds; otherwise it exits nonzero.
 
 ### Evaluation Metrics Explained
 
@@ -166,7 +168,8 @@ The system uses **Ragas** to evaluate RAG performance:
    - Checks if retrieved context contains all information needed
    - Higher score = more complete retrieval
 
-All four metric thresholds are applied by the evaluation pass/fail check.
+All four Ragas metric thresholds and the category-accuracy threshold (≥ 0.70) are
+applied by the evaluation pass/fail check.
 
 ### Golden Dataset Structure
 

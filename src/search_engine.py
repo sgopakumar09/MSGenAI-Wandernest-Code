@@ -15,9 +15,10 @@ logger = logging.getLogger(__name__)
 class TravelSearchEngine:
     """RAG-powered travel search and response synthesis."""
 
-    def __init__(self):
+    def __init__(self, *, enable_mlflow_tracking: bool = True):
+        self.enable_mlflow_tracking = enable_mlflow_tracking
         Config.validate()
-        if Config.MLFLOW_TRACKING_URI:
+        if self.enable_mlflow_tracking and Config.MLFLOW_TRACKING_URI:
             mlflow.set_tracking_uri(Config.MLFLOW_TRACKING_URI)
         self.governance_gate = GovernanceGate()
         self.llm = AzureChatOpenAI(
@@ -37,7 +38,7 @@ class TravelSearchEngine:
 
     @contextmanager
     def _run_context(self, run_name: str):
-        if not Config.MLFLOW_TRACKING_URI:
+        if not self.enable_mlflow_tracking or not Config.MLFLOW_TRACKING_URI:
             yield False
             return
         try:

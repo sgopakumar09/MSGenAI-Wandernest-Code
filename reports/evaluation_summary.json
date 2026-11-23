@@ -1,0 +1,16 @@
+{
+  "faithfulness": 0.9288888888888888,
+  "answer_relevancy": 0.788621285095836,
+  "context_precision": 0.8538888888431434,
+  "context_recall": 0.9333333333333333,
+  "category_accuracy": 0.8,
+  "total_test_cases": 15,
+  "thresholds": {
+    "faithfulness": 0.7,
+    "answer_relevancy": 0.7,
+    "context_precision": 0.7,
+    "context_recall": 0.7,
+    "category_accuracy": 0.7
+  },
+  "passed": true
+}
